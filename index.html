@@ -1,0 +1,2133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUNO BEST FASHION STORE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=Syne:wght@700;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #060608;
+      --bg-secondary: #0c0c11;
+      --accent-orange: #FF3B1D;
+      --accent-orange-glow: rgba(255, 59, 29, 0.35);
+      --text-white: #FFFFFF;
+      --text-gray: #8E8E9F;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --glass-bg: rgba(14, 14, 20, 0.8);
+      --glass-blur: blur(16px);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      background: #030304;
+      color: var(--text-white);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-orange);
+    }
+
+    /* Desktop Outer Showroom Backdrop */
+    .showroom-wrapper {
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      background: radial-gradient(circle at 10% 20%, rgba(20, 15, 10, 0.15) 0%, rgba(5, 5, 8, 1) 90%);
+      position: relative;
+      overflow: hidden;
+    }
+    .showroom-decor-left {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 45%;
+      padding: 5rem 3.5rem;
+      position: relative;
+      z-index: 10;
+    }
+    @media (min-width: 1024px) {
+      .showroom-decor-left {
+        display: flex;
+      }
+    }
+    .showroom-brand-stamp {
+      font-family: 'Syncopate', sans-serif;
+      font-size: 2.22rem;
+      line-height: .95;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    }
+    .showroom-brand-stamp span {
+      color: var(--accent-orange);
+      text-shadow: 0 0 20px var(--accent-orange-glow);
+    }
+    .showroom-manifesto {
+      max-width: 440px;
+      margin: 2rem 0;
+    }
+    .showroom-manifesto h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.5px;
+      color: #F3F3F7;
+    }
+    .showroom-manifesto p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-gray);
+    }
+    .showroom-hud {
+      font-family: monospace;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.35);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.5rem;
+    }
+    .showroom-hud .hud-val {
+      color: var(--text-white);
+      font-weight: bold;
+    }
+
+    /* Live Phone Frame Center Container */
+    .showroom-phone-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 1.5rem;
+      z-index: 10;
+    }
+    .phone-bezel {
+      width: 100%;
+      height: 100%;
+      max-width: 395px;
+      background: #000000;
+      border: 10px solid #1c1c1f;
+      border-radius: 48px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 
+                  0 0 0 2px rgba(255, 255, 255, 0.05),
+                  0 0 40px rgba(255, 59, 29, 0.05);
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 395 / 854;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (max-width: 1023px) {
+      .showroom-phone-center {
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+      }
+      .phone-bezel {
+        max-width: 100%;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+        aspect-ratio: auto;
+      }
+    }
+
+    /* Island/Speaker bar inside bezel */
+    .phone-notch {
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: 25px;
+      background: #000000;
+      border-radius: 20px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 3px rgba(255,255,255,0.1);
+    }
+    @media (max-width: 1023px) {
+      .phone-notch {
+        display: none;
+      }
+    }
+
+    /* Inside Phone App Frame Scroll engine */
+    .app-viewport {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-primary);
+    }
+    .app-scroller {
+      flex: 1;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      position: relative;
+      padding-bottom: 75px; /* bottom tab pad */
+    }
+
+    /* Intro Welcome Screen */
+    #campaign-loader {
+      position: absolute;
+      inset: 0;
+      background: #030304;
+      z-index: 1500;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .loader-logo {
+      font-family: 'Syncopate', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: logoReveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      text-align: center;
+    }
+    .loader-spin {
+      margin-top: 1.5rem;
+      width: 25px;
+      height: 2px;
+      background: var(--accent-orange);
+      box-shadow: 0 0 10px var(--accent-orange-glow);
+      animation: barStretch 1.5s infinite ease-in-out;
+    }
+    @keyframes logoReveal {
+      0% { opacity: 0; transform: scale(0.9); letter-spacing: 2px; }
+      100% { opacity: 1; transform: scale(1); letter-spacing: 6px; }
+    }
+    @keyframes barStretch {
+      0%, 100% { width: 10px; opacity: 0.3; }
+      50% { width: 50px; opacity: 1; }
+    }
+
+    /* Sticky Floating Header Overlay inside phone */
+    .phone-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 500;
+      background: linear-gradient(to bottom, rgba(3,3,4,0.92) 0%, rgba(3,3,4,0) 100%);
+      pointer-events: none;
+    }
+    .header-logo {
+      font-family: 'Syncopate', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      color: #fff;
+      pointer-events: auto;
+    }
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      pointer-events: auto;
+    }
+    .action-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(14, 14, 20, 0.7);
+      border: 1px solid var(--border-color);
+      backdrop-filter: var(--glass-blur);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s;
+    }
+    .action-circle:hover {
+      border-color: var(--accent-orange);
+      transform: scale(1.05);
+    }
+    .badge-count {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      background: var(--accent-orange);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 9px;
+      font-weight: bold;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 10px var(--accent-orange-glow);
+    }
+
+    /* Bottom sticky tab navigation bar inside phone */
+    .bottom-tabbar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      border-top: 1px solid var(--border-color);
+      z-index: 600;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 10px;
+    }
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text-gray);
+      text-decoration: none;
+      font-size: 0.62rem;
+      font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+      text-transform: uppercase;
+      gap: 2px;
+      cursor: pointer;
+      position: relative;
+      flex: 1;
+      height: 100%;
+      justify-content: center;
+      transition: color 0.3s;
+    }
+    .tab-item svg {
+      margin-bottom: 2px;
+      transition: transform 0.3s;
+      stroke: var(--text-gray);
+    }
+    .tab-item.active {
+      color: var(--accent-orange);
+    }
+    .tab-item.active svg {
+      transform: translateY(-2px);
+      stroke: var(--accent-orange);
+    }
+
+    /* Scroll Sections inside phone */
+    .app-section {
+      width: 100%;
+      min-height: calc(100vh - 64px); 
+      position: relative;
+    }
+    @media (min-width: 1024px) {
+      .app-section {
+        min-height: 790px;
+      }
+    }
+
+    /* Section 1: Hero Billboard Section */
+    .hero-banner {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.5rem 1.25rem;
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-image: linear-gradient(to top, rgba(6,6,8,1) 15%, rgba(6,6,8,0.4) 60%, rgba(6,6,8,0) 100%), 
+                        url('https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Sweater4.jpg');
+    }
+    .hero-title-wrap {
+      margin-bottom: 1.5rem;
+      z-index: 10;
+    }
+    .hero-title-wrap h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 3.2rem;
+      line-height: .85;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      margin-bottom: 0.5rem;
+    }
+    .hero-title-wrap h1 span {
+      display: block;
+      color: var(--accent-orange);
+    }
+    .hero-title-wrap p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-gray);
+    }
+    .hero-ctas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+      z-index: 10;
+    }
+    .btn-luxury {
+      background: #FFFFFF;
+      color: #000000;
+      border: 1px solid #FFFFFF;
+      padding: 13px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-luxury:hover {
+      background: var(--accent-orange);
+      border-color: var(--accent-orange);
+      color: #FFFFFF;
+      box-shadow: 0 8px 24px var(--accent-orange-glow);
+    }
+    .btn-luxury-outline {
+      background: rgba(14, 14, 20, 0.5);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: var(--glass-blur);
+    }
+    .btn-luxury-outline:hover {
+      border-color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* CSS Text Marquee Line */
+    .marquee-line {
+      background: #111116;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: scrollMarquee 20s linear infinite;
+      gap: 2rem;
+    }
+    .marquee-item {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .marquee-item::after {
+      content: "✦";
+      color: var(--accent-orange);
+    }
+    @keyframes scrollMarquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Section 2: Auto-Rotating Billboard Slider */
+    .billboard-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem 1.2rem;
+      overflow: hidden;
+      background: #030304;
+    }
+    .section-eyecatch {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 0.5rem;
+    }
+    .section-headline {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.85rem;
+      letter-spacing: -1.5px;
+      line-height: .95;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .billboard-frame {
+      flex: 1;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--border-color);
+      background: #0d0d12;
+      aspect-ratio: 1 / 1.15;
+    }
+    .slide-list {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .billboard-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 10;
+      background-size: cover;
+      background-position: center;
+    }
+    .billboard-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 20;
+    }
+    .slide-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,6,8,0.95) 10%, rgba(6,6,8,0.3) 60%, rgba(6,6,8,0.1) 100%);
+    }
+    .slide-top-tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--accent-orange);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+    }
+    .slide-info-card {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      right: 15px;
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .slide-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .slide-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: bold;
+      letter-spacing: -0.2px;
+      line-height: 1.3;
+      max-width: 70%;
+    }
+    .slide-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--accent-orange);
+    }
+    .slide-order-btn {
+      width: 100%;
+      height: 38px;
+      background: #FFFFFF;
+      color: #000000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.65rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.3s;
+    }
+    .slide-order-btn:hover {
+      background: var(--accent-orange);
+      color: #FFFFFF;
+    }
+
+    /* Sliding horizontal story indicators style */
+    .billboard-indicators {
+      display: flex;
+      gap: 6px;
+      margin-top: 12px;
+      width: 100%;
+    }
+    .indicator-pill {
+      flex: 1;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .indicator-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--accent-orange);
+      transition: width 0.1s linear;
+    }
+
+    /* Slide Manual Toggles */
+    .slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(14,14,20,0.7);
+      border: 1px solid var(--border-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 40;
+      transition: all 0.2s;
+    }
+    .slide-arrow:hover {
+      border-color: var(--accent-orange);
+      background: var(--accent-orange);
+    }
+    .arrow-left { left: 8px; }
+    .arrow-right { right: 8px; }
+
+    /* Section 3: Digital Catalogue Grid */
+    .catalogue-container {
+      padding: 1.5rem 1.2rem;
+      background: var(--bg-secondary);
+    }
+    .catalogue-filter-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      scroll-snap-type: x mandatory;
+    }
+    .filter-pill {
+      background: rgba(14,14,20,0.5);
+      border: 1px solid var(--border-color);
+      color: rgba(255,255,255,0.6);
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+      scroll-snap-align: start;
+    }
+    .filter-pill.active {
+      background: #FFFFFF;
+      border-color: #FFFFFF;
+      color: #000000;
+      font-weight: 700;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .product-card {
+      background: rgba(14, 14, 20, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .product-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .product-img-wrapper {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #0d0d12;
+      position: relative;
+    }
+    .product-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .product-card:hover .product-img-wrapper img {
+      transform: scale(1.05);
+    }
+    .product-details {
+      padding: 8px 4px 4px 4px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .product-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: bold;
+      letter-spacing: -0.1px;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 4px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .product-row-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .product-card-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.82rem;
+      font-weight: bold;
+      color: var(--accent-orange);
+    }
+    .card-actions {
+      display: flex;
+      gap: 4px;
+    }
+    .card-small-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .card-small-btn svg {
+      stroke: #fff;
+    }
+    .card-small-btn:hover {
+      background: var(--accent-orange);
+      border-color: var(--accent-orange);
+    }
+    .card-small-btn.whatsapp-direct-btn:hover {
+      background: #25D366;
+      border-color: #25D366;
+    }
+
+    /* Section 4: Contact & Guidelines */
+    .contact-container {
+      padding: 2rem 1.2rem;
+      background: var(--bg-primary);
+      text-align: center;
+    }
+    .contact-hero {
+      background: radial-gradient(circle at center, rgba(255, 59, 29, 0.08) 0%, rgba(0,0,0,0) 80%);
+      padding: 1.5rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 2rem;
+    }
+    .contact-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: .95;
+      margin-bottom: 10px;
+    }
+    .contact-desc {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+    .accordion-wrap {
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    .accord-item {
+      border-bottom: 1px solid var(--border-color);
+    }
+    .accord-trigger {
+      width: 100%;
+      padding: 14px 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .accord-trigger:hover {
+      color: var(--accent-orange);
+    }
+    .accord-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: var(--text-gray);
+      padding-bottom: 0px;
+    }
+    .accord-item.open .accord-content {
+      max-height: 150px;
+      padding-bottom: 14px;
+    }
+    .accord-item.open .accord-icon {
+      transform: rotate(45deg);
+      stroke: var(--accent-orange);
+    }
+    .accord-icon {
+      transition: transform 0.3s;
+    }
+
+    /* Drawer/Panel overlays */
+    .slide-panel-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slide-panel-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    /* Elegant Slide-up Drawer for Details */
+    .detail-drawer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1100;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 85%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .detail-drawer.open {
+      transform: translateY(0);
+    }
+    .drawer-top-notch {
+      width: 40px;
+      height: 4px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 10px;
+      margin: 10px auto;
+      cursor: pointer;
+    }
+    .drawer-scroller {
+      padding: 10px 1.25rem 2rem 1.25rem;
+      overflow-y: auto;
+    }
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .drawer-meta-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: bold;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      max-width: 75%;
+    }
+    .drawer-meta-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent-orange);
+    }
+    .drawer-img-view {
+      width: 100%;
+      aspect-ratio: 1.1;
+      background: #0d0d12;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border-color);
+    }
+    .drawer-img-view img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .drawer-desc {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-gray);
+      margin-bottom: 2rem;
+    }
+    .drawer-ctas {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 12px;
+    }
+
+    /* Sliding Drawer from Right for Inquiry Cart Bag */
+    .bag-drawer {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      max-width: 330px;
+      background: var(--bg-secondary);
+      border-left: 1px solid var(--border-color);
+      z-index: 1200;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+    }
+    .bag-drawer.open {
+      transform: translateX(0);
+    }
+    .bag-header {
+      padding: 1.2rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bag-header h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      letter-spacing: -0.5px;
+    }
+    .bag-close-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: none;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .bag-items-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cart-empty {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      color: var(--text-gray);
+      font-size: 0.8rem;
+      padding: 2rem;
+    }
+    .cart-empty svg {
+      margin: 0 auto 15px auto;
+      stroke: var(--text-gray);
+      opacity: 0.5;
+    }
+    .bag-item-card {
+      display: flex;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 8px;
+      align-items: center;
+    }
+    .bag-item-thumb {
+      width: 54px;
+      height: 54px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #0d0d12;
+      border: 1px solid var(--border-color);
+    }
+    .bag-item-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .bag-item-details {
+      flex: 1;
+    }
+    .bag-item-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.65rem;
+      font-weight: bold;
+      color: #fff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+    .bag-item-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      color: var(--accent-orange);
+      margin-top: 2px;
+    }
+    .bag-item-qty {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.06);
+      padding: 3px 6px;
+      border-radius: 6px;
+    }
+    .qty-btn {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      font-size: 9px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .qty-val {
+      font-family: monospace;
+      font-size: 11px;
+    }
+    .qty-del {
+      border: none;
+      background: none;
+      color: #a13d3d;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .bag-footer {
+      padding: 1.2rem;
+      border-top: 1px solid var(--border-color);
+      background: rgba(14,14,20,0.9);
+    }
+    .bag-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+    .bag-total-row span:last-child {
+      color: var(--accent-orange);
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+    }
+
+    /* Glowing Toast Notifications */
+    .toast-tray {
+      position: absolute;
+      top: 65px;
+      left: 15px;
+      right: 15px;
+      z-index: 10000;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .toast-msg {
+      background: var(--accent-orange);
+      color: #FFFFFF;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      box-shadow: 0 10px 25px var(--accent-orange-glow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(-20px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Pulse float visual tag code */
+    .pulsing-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00ff66;
+      box-shadow: 0 0 10px rgba(0, 255, 102, 0.6);
+      animation: heartBeat 2s infinite ease-in-out;
+    }
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.3); opacity: 1; }
+    }
+
+    /* Interactive Desktop Decor Overlay */
+    .fullscreen-btn {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      padding: 10px 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border-color);
+      border-radius: 30px;
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      cursor: pointer;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .fullscreen-btn:hover {
+      background: #FFFFFF;
+      color: #000000;
+      border-color: #FFFFFF;
+    }
+    @media (min-width: 1024px) {
+      .fullscreen-btn {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="showroom-wrapper" id="showroom-wrapper">
+    <!-- Showroom Outer Decor Left (Desktop Only) -->
+    <div class="showroom-decor-left">
+      <div>
+        <div class="showroom-brand-stamp">
+          CRUNO BEST<br>FASHION <span>STORE</span>
+        </div>
+        <div class="showroom-manifesto">
+          <h3>SERIES 04 // STREETWEAR LUXURY</h3>
+          <p>
+            An editorial catalog engineered exclusively for the modern avant-garde showroom. Directly connecting Harare streets to digital global campaign blocks. Handcrafted garment archives designed with immaculate weight, drape, and structural geometries.
+          </p>
+        </div>
+      </div>
+
+      <div class="showroom-hud">
+        <div>
+          <div>LOC. COORDINATES</div>
+          <div class="hud-val">17.8252° S, 31.0335° E</div>
+        </div>
+        <div>
+          <div>SEASON</div>
+          <div class="hud-val">AUTUMN / WINTER 24</div>
+        </div>
+        <div>
+          <div>SHOWROOM HOURS</div>
+          <div class="hud-val">10:00 - 18:00 UTC+2</div>
+        </div>
+        <div>
+          <div>WHATSAPP DIRECT</div>
+          <div class="hud-val">+263 77 739 7146</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Centered phone vessel -->
+    <div class="showroom-phone-center">
+      <div class="phone-bezel" id="phone-bezel">
+        <div class="phone-notch"></div>
+        <div class="app-viewport">
+          
+          <!-- Campaign Loader Overlay -->
+          <div id="campaign-loader">
+            <div class="loader-logo">CRUNO BEST FASHION STORE</div>
+            <div class="loader-spin"></div>
+          </div>
+
+          <!-- Sticky Floating Header Overlay inside phone -->
+          <div class="phone-header">
+            <div class="header-logo">CRUNO BEST FASHION STORE</div>
+            <div class="header-actions">
+              <div class="action-circle" onclick="toggleBagDrawer()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <div class="badge-count" id="header-bag-count">0</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sticky Bottom Tab Navigation Bar -->
+          <div class="bottom-tabbar">
+            <div class="tab-item active" onclick="scrollToSection('hero-section')" id="tab-hero">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="tab-svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Hero
+            </div>
+            <div class="tab-item" onclick="scrollToSection('billboard-section')" id="tab-billboard">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="tab-svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="10" height="10"/></svg>
+              Billboard
+            </div>
+            <div class="tab-item" onclick="scrollToSection('catalogue-section')" id="tab-catalogue">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="tab-svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              Catalogue
+            </div>
+            <div class="tab-item" onclick="scrollToSection('contact-section')" id="tab-contact">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="tab-svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Connect
+            </div>
+          </div>
+
+          <!-- Toast Notification Tray -->
+          <div class="toast-tray" id="toast-tray"></div>
+
+          <!-- Scrollable Core Container inside phone -->
+          <div class="app-scroller" id="viewport-scroller">
+            
+            <!-- Section 1: Hero Billboard -->
+            <section class="app-section hero-banner" id="hero-section">
+              <div class="hero-title-wrap">
+                <p>AUTUMN / WINTER 24</p>
+                <h1>CRUNO BEST<br><span>FASHION STORE</span></h1>
+                <p style="letter-spacing: normal; text-transform: none; color: #fff; margin-top: 5px; font-size: 0.82rem;">Quality Fashion. Everyday Confidence.</p>
+              </div>
+              <div class="hero-ctas">
+                <button class="btn-luxury" onclick="scrollToSection('billboard-section')">
+                  CAMPAIGNS
+                </button>
+                <button class="btn-luxury btn-luxury-outline" onclick="scrollToSection('catalogue-section')">
+                  EXPLORE BAG
+                </button>
+              </div>
+            </section>
+
+            <!-- CSS Running Auto-Marquee -->
+            <div class="marquee-line">
+              <div class="marquee-track">
+                <div class="marquee-item">CRUNO BEST FASHION STORE // AW24 COLLECTION</div>
+                <div class="marquee-item">EXPRESS DELIVERY ACROSS HARARE</div>
+                <div class="marquee-item">ZIPIT, ECOCASH, CASH ACCEPTED</div>
+                <div class="marquee-item">CRUNO BEST FASHION STORE // AW24 COLLECTION</div>
+                <div class="marquee-item">EXPRESS DELIVERY ACROSS HARARE</div>
+                <div class="marquee-item">ZIPIT, ECOCASH, CASH ACCEPTED</div>
+              </div>
+            </div>
+
+            <!-- Section 2: Auto-Rotating Billboard Slideshow -->
+            <section class="app-section billboard-container" id="billboard-section" style="min-height: auto; padding: 2.2rem 1.2rem;">
+              <div class="section-eyecatch">CAMPAIGN LOOKS</div>
+              <div class="section-headline">FASHION BILLBOARD</div>
+
+              <div class="billboard-frame" onmouseenter="pauseBillboard()" onmouseleave="resumeBillboard()">
+                
+                <!-- Manual Arrows -->
+                <div class="slide-arrow arrow-left" onclick="slideManual(-1)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                </div>
+                <div class="slide-arrow arrow-right" onclick="slideManual(1)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+
+                <div class="slide-list" id="billboard-slide-list">
+                  <!-- Generated Campaign Slides go here -->
+                </div>
+              </div>
+
+              <!-- Stories-like active countdown indicator bars -->
+              <div class="billboard-indicators" id="billboard-indicators-container">
+                <!-- Generated lines go here -->
+              </div>
+            </section>
+
+            <!-- Section 3: Digital Catalog Overview -->
+            <section class="app-section catalogue-container" id="catalogue-section" style="min-height: auto;">
+              <div class="section-eyecatch">CATALOGUE</div>
+              <div class="section-headline">DIGITAL BLOCK</div>
+
+              <!-- Horizontal Categories Pills Scrolling bar -->
+              <div class="catalogue-filter-bar">
+                <div class="filter-pill active" onclick="setCategoryFilter('ALL', this)">ALL CODES</div>
+                <div class="filter-pill" onclick="setCategoryFilter('T-Shirts', this)">T-SHIRTS</div>
+                <div class="filter-pill" onclick="setCategoryFilter('Sweaters', this)">SWEATERS</div>
+                <div class="filter-pill" onclick="setCategoryFilter('Caps', this)">CAPS</div>
+                <div class="filter-pill" onclick="setCategoryFilter('Bottoms', this)">BOTTOMS</div>
+              </div>
+
+              <!-- Dynamic Catalogue Grid -->
+              <div class="products-grid" id="catalogue-products-grid">
+                <!-- Generated cards go here -->
+              </div>
+            </section>
+
+            <!-- Section 4: Brand Contact, Sharing & Guidelines -->
+            <section class="app-section contact-container" id="contact-section" style="min-height: auto;">
+              <div class="contact-hero">
+                <div class="contact-title">JOIN THE BLOCK</div>
+                <div class="contact-desc">
+                  Have inquiries regarding specific sizing, sizing fit, custom items, or collection drops? Chat directly with Cruno representative.
+                </div>
+                <button class="btn-luxury" style="width: 100%; margin-bottom: 0.8rem; background: #25D366; border-color: #25D366; color: #fff;" onclick="openWhatsAppInquire('GENERAL')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> WHATSAPP CHAT
+                </button>
+                <button class="btn-luxury btn-luxury-outline" style="width: 100%;" onclick="copyCampaignLink()">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> SHARE EXPERIENCE
+                </button>
+              </div>
+
+              <!-- Accordion Guidelines -->
+              <div class="accordion-wrap">
+                <div class="accord-item">
+                  <button class="accord-trigger" onclick="toggleAccord(this)">
+                    <span>ORDERING & SETTLEMENT</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="accord-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  </button>
+                  <div class="accord-content">
+                    Add chosen articles to your Enquiry Bag and hit submit. Your selections are neatly bundled into a single preset Whatsapp message template. Payments accepted in USD via ZIPIT, Ecocash, or hard cash upon pickup/consignment routing within Harare local boundaries.
+                  </div>
+                </div>
+                <div class="accord-item">
+                  <button class="accord-trigger" onclick="toggleAccord(this)">
+                    <span>SHIPPING & ROUTINGS</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="accord-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  </button>
+                  <div class="accord-content">
+                    We offer instant dispatch services targeting central Harare workspace nodes. Regional deliveries and nationwide parcel shipping executed efficiently via custom registered courier networks.
+                  </div>
+                </div>
+                <div class="accord-item">
+                  <button class="accord-trigger" onclick="toggleAccord(this)">
+                    <span>MATERIALS & SIZING SPEC</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="accord-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  </button>
+                  <div class="accord-content">
+                    All shirts, pullovers, and knits are assembled utilizing heavyweight raw cotton blocks of 240GSM to 400GSM density. Cut is relaxed/oversized. Sizing ranges from Small (S) to Double Extra Large (XXL).
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tiny Stamp Coordinates Footer -->
+              <div style="font-family: monospace; font-size: 0.65rem; color: rgba(255,255,255,0.22); margin-top: 2rem;">
+                CRUNO BEST FASHION STORE SERIES 04.<br>
+                HARARE ORIGINS // REGISTERED MULTI-BLOCK CO.<br>
+                ALL RIGHTS SECURED 2026.<br><br>
+                <div style="opacity: 0.55; letter-spacing: 0.5px; text-transform: uppercase;">Powered by the WarStreet Experience Model</div>
+              </div>
+            </section>
+
+          </div> <!-- End scroller -->
+
+          <!-- Drawer Backdrops -->
+          <div class="slide-panel-backdrop" id="drawer-backdrop" onclick="closeAllDrawers()"></div>
+
+          <!-- Bottom Slide-up Drawer for Product Details -->
+          <div class="detail-drawer" id="detail-drawer">
+            <div class="drawer-top-notch" onclick="closeDetailDrawer()"></div>
+            <div class="drawer-scroller" id="detail-drawer-scroller">
+              <!-- Dynamically populated detail template -->
+            </div>
+          </div>
+
+          <!-- Cart Sliding Drawer from Right -->
+          <div class="bag-drawer" id="bag-drawer">
+            <div class="bag-header">
+              <h3>YOUR ENQUIRY BAG</h3>
+              <button class="bag-close-btn" onclick="toggleBagDrawer()">×</button>
+            </div>
+            <div class="bag-items-list" id="bag-items-list">
+              <!-- Dynamically populated list -->
+            </div>
+            <div class="bag-footer" id="bag-footer-wrap">
+              <div class="bag-total-row">
+                <span>ESTIMATED SUM:</span>
+                <span id="bag-total-sum">$0</span>
+              </div>
+              <button class="btn-luxury" style="width: 100%; background: var(--accent-orange); color: #fff; border-color: var(--accent-orange);" onclick="checkoutEnquiryViaWhatsApp()">
+                ENQUIRE VIA WHATSAPP (EST. BAG)
+              </button>
+            </div>
+          </div>
+
+        </div> <!-- End app-viewport -->
+      </div> <!-- End phone bezel -->
+    </div> <!-- End center phone wrapper -->
+
+    <!-- Desktop Scale Toggle button -->
+    <button class="fullscreen-btn" onclick="toggleBezelFullscreen()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <span>EXPAND VIEWPORT</span>
+    </button>
+  </div>
+
+  <script>
+    /* Absolute Product Data Record */
+    const products = [
+      {
+        id: 'tshirt-4',
+        name: 'CRUNO SIGNATURE TEE // 04',
+        price: 10,
+        priceStr: '$10',
+        category: 'T-Shirts',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Tishit4.jpg',
+        description: 'Premium heavyweight organic cotton garment dyed in an elegant core hue. Loose structure block with boxy side panels, robust double-needle stitched cuffs, a thick rib mock collar, and clean structured shoulders designed to hold form perfectly after multiple wash cycles.'
+      },
+      {
+        id: 'tshirt-3',
+        name: 'ORG BLOCK OVERSIZED TEE // 03',
+        price: 10,
+        priceStr: '$10',
+        category: 'T-Shirts',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Tishirt3.jpg',
+        description: 'An executive street silhouette featuring oversized proportions with high density digital typographic chest block print. Ultra soft long-staple cotton yarn ensures elite breathing performance during hot Harare days while maintaining raw structured posture.'
+      },
+      {
+        id: 'tshirt-2',
+        name: 'URBAN UTILITY TEE // 02',
+        price: 10,
+        priceStr: '$10',
+        category: 'T-Shirts',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Tishirt2.jpg',
+        description: 'Engineered utility cotton jersey shirt. Crafted with micro-reinforced side darts, customized urban contrast tags on raw side seams, premium loop hanger details, and a high-tensile neck binding designed to handle intense street activity.'
+      },
+      {
+        id: 'tshirt-1',
+        name: 'VINTAGE WASH TEE // 01',
+        price: 10,
+        priceStr: '$10',
+        category: 'T-Shirts',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Tishirt1.jpg',
+        description: 'Individually bleached and distressed charcoal wash boxy tee. Hand-finished vintage dye pattern means no two pieces are identical. Pre-shrunk with split side details and extra drop-shoulder structure representing archival modern trends.'
+      },
+      {
+        id: 'sweater-4',
+        name: 'CRUNO ARCHIVE SWEATER // 04',
+        price: 20,
+        priceStr: '$20',
+        category: 'Sweaters',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Sweater4.jpg',
+        description: 'Immaculately woven, heavyweight premium loopback knit sweater. Styled in a loose rectangular torso envelope with deep rib waist panels, specialized drop arm inserts, and a high comfortable mockneck. Ultimate warmth styling piece.'
+      },
+      {
+        id: 'sweater-1',
+        name: 'CORE BLOCK SWEATER // 01',
+        price: 20,
+        priceStr: '$20',
+        category: 'Sweaters',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Sweater1.jpg',
+        description: 'High-density French Terry cotton blend sweater designed for daily Harare urban routing. Flatlock comfort seams, tailored side gusset panels, signature block embroidery detailing across lower waist, and thick custom brushed sleeves.'
+      },
+      {
+        id: 'sweater-3',
+        name: 'RECONSTRUCTED SWEATER // 03',
+        price: 20,
+        priceStr: '$20',
+        category: 'Sweaters',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Swearter3.jpg',
+        description: 'An avant-garde streetwear classic featuring paneled deconstruction. Asymmetrical contrast stitching across front chest, engineered heavy rib sleeve bands, custom hand-cut details, and a cozy high-density polar cotton brush finish.'
+      },
+      {
+        id: 'caps-3',
+        name: 'VINTAGE BLOCK CAP // 03',
+        price: 10,
+        priceStr: '$10',
+        category: 'Caps',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Caps3.jpg',
+        description: 'Six-panel low profile classic strapback. Crafted from structural pre-washed dynamic twill cotton blocks, featuring customized matte silver closure slider, breathing metal eyelets, and high-definition 3D font embroidery on front.'
+      },
+      {
+        id: 'caps-1',
+        name: 'SIGNATURE EMBROIDERED CAP // 01',
+        price: 10,
+        priceStr: '$10',
+        category: 'Caps',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Caps1.jpg',
+        description: 'Rugged washed utility canvas adjustable cap. Crafted with broad brim shielding, thick ventilation columns, and signature CRUNO logo stitch. Elegant curvature lines that blend beautifully into standard high-fashion styling codes.'
+      },
+      {
+        id: 'bottom-3',
+        name: 'HEAVY PANELLED PANTS // 03',
+        price: 20,
+        priceStr: '$20',
+        category: 'Bottoms',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Bottom3.jpg',
+        description: 'Multi-pocket heavyweight experimental canvas trousers. Inspired by mechanical workshops, featuring double-layer knee zones, customized steel grommets, ankle-snapping brass buttons, and side-zipped storage pockets.'
+      },
+      {
+        id: 'bottom-2',
+        name: 'RELAXED UTILITY JEANS // 02',
+        price: 18,
+        priceStr: '$18',
+        category: 'Bottoms',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Bottom2.jpg',
+        description: 'Light stone-wash structured casual streetwear trousers. Slouchy straight leg fit styled with customized workwear hammer loops, deep utility coin-slots, reinforced silver rivets, and raw edge ankle seams for extra personality.'
+      },
+      {
+        id: 'bottom-1',
+        name: 'CRUNO RAW SLIM JEANS // 01',
+        price: 15,
+        priceStr: '$15',
+        category: 'Bottoms',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Bottom1.jpg',
+        description: 'Rigid selvedge premium raw indigo jeans designed to adapt and wash down to your leg ergonomics. Clean five-pocket styling, heavy leather brand patch on waistband, custom tack buttons, and an elegant minimal taper.'
+      }
+    ];
+
+    /* Featured Slide Deck Selection */
+    const campaignSlides = [
+      {
+        id: 'tshirt-4',
+        name: 'CRUNO SIGNATURE TEE // 04',
+        price: '$10',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Tishit4.jpg',
+        tag: 'NEW EXCLUSIVE'
+      },
+      {
+        id: 'sweater-4',
+        name: 'CRUNO ARCHIVE SWEATER // 04',
+        price: '$20',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Sweater4.jpg',
+        tag: 'CAMPAIGN FIT'
+      },
+      {
+        id: 'caps-1',
+        name: 'SIGNATURE EMBROIDERED CAP // 01',
+        price: '$10',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Caps1.jpg',
+        tag: 'LIMITED RUN'
+      },
+      {
+        id: 'bottom-3',
+        name: 'HEAVY PANELLED PANTS // 03',
+        price: '$20',
+        image: 'https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/CrunoImages/Bottom3.jpg',
+        tag: 'STREET ARMOR'
+      }
+    ];
+
+    /* App Global State Variables */
+    let currentSlideIndex = 0;
+    let billboardInterval = null;
+    let slideTimerMs = 6000;
+    let activeCategory = 'ALL';
+    let currentTimerProgress = 0;
+    let progressInterval = null;
+    let isBillboardPaused = false;
+    
+    // Durable Cart State (LocalStorage based)
+    let inquiryBag = JSON.parse(localStorage.getItem('CRUNO_INQUIRY_BAG') || '[]');
+
+    /* Start Engine on Window Mount */
+    window.addEventListener('DOMContentLoaded', () => {
+      // Setup dynamic lists
+      renderCampaignSlides();
+      renderCatalogueGrid();
+      updateBagGraphics();
+      
+      // Fire up intervals
+      startSlideAutoplay();
+
+      // Clear Startup Loader
+      setTimeout(() => {
+        const loader = document.getElementById('campaign-loader');
+        if (loader) {
+          loader.style.opacity = '0';
+          loader.style.transform = 'translateY(20px)';
+          setTimeout(() => loader.style.display = 'none', 800);
+        }
+      }, 1800);
+
+      // Scroll Event active highlight mapping
+      const scroller = document.getElementById('viewport-scroller');
+      scroller.addEventListener('scroll', handleViewportScrolling);
+    });
+
+    /* Rendering Auto-Rotating Slideshow */
+    function renderCampaignSlides() {
+      const slideList = document.getElementById('billboard-slide-list');
+      const indicatorsContainer = document.getElementById('billboard-indicators-container');
+      
+      slideList.innerHTML = '';
+      indicatorsContainer.innerHTML = '';
+
+      campaignSlides.forEach((slide, idx) => {
+        // Build individual slide DOM
+        const isActive = idx === 0 ? 'active' : '';
+        const slideDom = document.createElement('div');
+        slideDom.className = `billboard-slide ${isActive}`;
+        slideDom.style.backgroundImage = `url('${slide.image}')`;
+        slideDom.innerHTML = `
+          <div class="slide-gradient"></div>
+          <div class="slide-top-tag">${slide.tag}</div>
+          <div class="slide-info-card">
+            <div class="slide-meta">
+              <div class="slide-title">${slide.name}</div>
+              <div class="slide-price">${slide.price}</div>
+            </div>
+            <button class="slide-order-btn" onclick="event.stopPropagation(); triggerDirectOrder('${slide.id}')">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="10" height="10"/></svg>
+              ORDER VIA WHATSAPP
+            </button>
+          </div>
+        `;
+        // Double-tap zoom custom event or detail trigger on slide click
+        slideDom.addEventListener('click', () => {
+          triggerProductDetail(slide.id);
+        });
+        slideList.appendChild(slideDom);
+
+        // Build Instagram layout story indicators
+        const indicator = document.createElement('div');
+        indicator.className = 'indicator-pill';
+        indicator.onclick = () => jumpToSlide(idx);
+        indicator.innerHTML = `<div class="indicator-fill" id="indicator-fill-${idx}"></div>`;
+        indicatorsContainer.appendChild(indicator);
+      });
+    }
+
+    /* Rendering Digital Catalog Grid */
+    function renderCatalogueGrid() {
+      const grid = document.getElementById('catalogue-products-grid');
+      grid.innerHTML = '';
+
+      // Filter logic
+      const filtered = activeCategory === 'ALL' 
+        ? products 
+        : products.filter(p => p.category === activeCategory);
+
+      filtered.forEach((p) => {
+        const hasInBag = inquiryBag.some(item => item.id === p.id);
+        const cartIconColor = hasInBag ? 'stroke: var(--accent-orange)' : 'stroke: #ffffff';
+        
+        const card = document.createElement('div');
+        card.id = `card-${p.id}`;
+        card.className = 'product-card';
+        card.onclick = () => triggerProductDetail(p.id);
+        card.innerHTML = `
+          <div class="product-img-wrapper">
+            <img src="${p.image}" alt="${p.name}" loading="lazy">
+          </div>
+          <div class="product-details">
+            <div class="product-name">${p.name}</div>
+            <div class="product-row-price">
+              <div class="product-card-price">${p.priceStr}</div>
+              <div class="card-actions">
+                <div class="card-small-btn" title="Add to Bag" onclick="event.stopPropagation(); addItemToBag('${p.id}')">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                </div>
+                <div class="card-small-btn whatsapp-direct-btn" title="WhatsApp Order" onclick="event.stopPropagation(); triggerDirectOrder('${p.id}')">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    /* Autoplay Slide Interval Tick Logic */
+    function startSlideAutoplay() {
+      clearInterval(billboardInterval);
+      clearInterval(progressInterval);
+      
+      currentTimerProgress = 0;
+      updateIndicatorProgress();
+
+      // Progress animation updater
+      progressInterval = setInterval(() => {
+        if (!isBillboardPaused) {
+          currentTimerProgress += (100 / (slideTimerMs / 100));
+          if (currentTimerProgress >= 100) {
+            currentTimerProgress = 0;
+            rotateSlide(1);
+          }
+          updateIndicatorProgress();
+        }
+      }, 100);
+    }
+
+    function updateIndicatorProgress() {
+      // Clear all other widths
+      campaignSlides.forEach((_, idx) => {
+        const fill = document.getElementById(`indicator-fill-${idx}`);
+        if (fill) {
+          if (idx < currentSlideIndex) {
+            fill.style.width = '100%';
+          } else if (idx === currentSlideIndex) {
+            fill.style.width = `${currentTimerProgress}%`;
+          } else {
+            fill.style.width = '0%';
+          }
+        }
+      });
+    }
+
+    function rotateSlide(direction) {
+      const slides = document.querySelectorAll('.billboard-slide');
+      if (slides.length === 0) return;
+
+      slides[currentSlideIndex].classList.remove('active');
+      
+      currentSlideIndex = (currentSlideIndex + direction + campaignSlides.length) % campaignSlides.length;
+      slides[currentSlideIndex].classList.add('active');
+      currentTimerProgress = 0;
+    }
+
+    function slideManual(direction) {
+      rotateSlide(direction);
+      currentTimerProgress = 0;
+      updateIndicatorProgress();
+    }
+
+    function jumpToSlide(idx) {
+      const slides = document.querySelectorAll('.billboard-slide');
+      slides[currentSlideIndex].classList.remove('active');
+      
+      currentSlideIndex = idx;
+      slides[currentSlideIndex].classList.add('active');
+      currentTimerProgress = 0;
+      updateIndicatorProgress();
+    }
+
+    function pauseBillboard() {
+      isBillboardPaused = true;
+    }
+
+    function resumeBillboard() {
+      isBillboardPaused = false;
+    }
+
+    /* Change Active Category Code Filter */
+    function setCategoryFilter(category, element) {
+      activeCategory = category;
+      
+      // Update Tab Pill designs
+      const pills = document.querySelectorAll('.filter-pill');
+      pills.forEach(pill => pill.classList.remove('active'));
+      element.classList.add('active');
+
+      renderCatalogueGrid();
+    }
+
+    /* Handle dynamic scrollbar position tab highlight syncing */
+    function handleViewportScrolling() {
+      const scroller = document.getElementById('viewport-scroller');
+      const scrollTop = scroller.scrollTop;
+
+      // Extract section bounds
+      const hero = document.getElementById('hero-section');
+      const billboard = document.getElementById('billboard-section');
+      const catalogue = document.getElementById('catalogue-section');
+      const contact = document.getElementById('contact-section');
+
+      let activeId = 'tab-hero';
+      const offset = 180; // trigger offset threshold
+
+      if (scrollTop >= contact.offsetTop - offset) {
+        activeId = 'tab-contact';
+      } else if (scrollTop >= catalogue.offsetTop - offset) {
+        activeId = 'tab-catalogue';
+      } else if (scrollTop >= billboard.offsetTop - offset) {
+        activeId = 'tab-billboard';
+      }
+
+      // Sync CSS classes
+      const items = document.querySelectorAll('.tab-item');
+      items.forEach(item => item.classList.remove('active'));
+      document.getElementById(activeId).classList.add('active');
+    }
+
+    function scrollToSection(sectionId) {
+      const scroller = document.getElementById('viewport-scroller');
+      const section = document.getElementById(sectionId);
+      if (scroller && section) {
+        scroller.scrollTo({
+          top: section.offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    /* Accordion Toggle Logic */
+    function toggleAccord(btn) {
+      const parent = btn.parentElement;
+      const isOpen = parent.classList.contains('open');
+      
+      // Close all first for accordion behavior
+      const allItems = document.querySelectorAll('.accord-item');
+      allItems.forEach(item => item.classList.remove('open'));
+
+      if (!isOpen) {
+        parent.classList.add('open');
+      }
+    }
+
+    /* Slide-up Detail Drawer control */
+    function triggerProductDetail(productId) {
+      const p = products.find(item => item.id === productId);
+      if (!p) return;
+
+      const scroller = document.getElementById('detail-drawer-scroller');
+      scroller.innerHTML = `
+        <div class="drawer-header">
+          <div class="drawer-meta-title">${p.name}</div>
+          <div class="drawer-meta-price">${p.priceStr}</div>
+        </div>
+        <div class="drawer-img-view">
+          <img src="${p.image}" alt="${p.name}">
+        </div>
+        <div class="drawer-desc">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; color: #fff; margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase;">GARMENT SPECS & FABRICATION //</div>
+          ${p.description}
+        </div>
+        <div class="drawer-ctas">
+          <button class="btn-luxury" onclick="addItemToBag('${p.id}'); closeDetailDrawer();">
+            ADD TO BAG
+          </button>
+          <button class="btn-luxury btn-luxury-outline" onclick="triggerDirectOrder('${p.id}')" style="border-color: #25D366; color: #25D366;">
+            WHATSAPP ORDER
+          </button>
+        </div>
+      `;
+
+      // Open View
+      document.getElementById('drawer-backdrop').classList.add('active');
+      document.getElementById('detail-drawer').classList.add('open');
+    }
+
+    function closeDetailDrawer() {
+      document.getElementById('detail-drawer').classList.remove('open');
+      document.getElementById('drawer-backdrop').classList.remove('active');
+    }
+
+    function closeAllDrawers() {
+      closeDetailDrawer();
+      document.getElementById('bag-drawer').classList.remove('open');
+    }
+
+    /* Bag Overlay right navigation control */
+    function toggleBagDrawer() {
+      const drawer = document.getElementById('bag-drawer');
+      const backdrop = document.getElementById('drawer-backdrop');
+      const isOpen = drawer.classList.contains('open');
+
+      if (isOpen) {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('active');
+      } else {
+        closeDetailDrawer(); // avoid double visual clutter
+        drawer.classList.add('open');
+        backdrop.classList.add('active');
+      }
+    }
+
+    /* Durable Local-Storage Cart state methods */
+    function addItemToBag(productId) {
+      const p = products.find(item => item.id === productId);
+      if (!p) return;
+
+      const existingTaskIdx = inquiryBag.findIndex(item => item.id === productId);
+      if (existingTaskIdx > -1) {
+        inquiryBag[existingTaskIdx].qty += 1;
+      } else {
+        inquiryBag.push({ ...p, qty: 1 });
+      }
+
+      // Safe save
+      localStorage.setItem('CRUNO_INQUIRY_BAG', JSON.stringify(inquiryBag));
+      updateBagGraphics();
+      showToastNotification(`SUCCESSFULLY ADDED ${p.name} TO BAG! ✦`);
+    }
+
+    function popQty(productId, qtyChange) {
+      const existingTaskIdx = inquiryBag.findIndex(item => item.id === productId);
+      if (existingTaskIdx === -1) return;
+
+      inquiryBag[existingTaskIdx].qty += qtyChange;
+      if (inquiryBag[existingTaskIdx].qty <= 0) {
+        inquiryBag.splice(existingTaskIdx, 1);
+      }
+
+      localStorage.setItem('CRUNO_INQUIRY_BAG', JSON.stringify(inquiryBag));
+      updateBagGraphics();
+    }
+
+    function deleteCartItem(productId) {
+      inquiryBag = inquiryBag.filter(item => item.id !== productId);
+      localStorage.setItem('CRUNO_INQUIRY_BAG', JSON.stringify(inquiryBag));
+      updateBagGraphics();
+    }
+
+    function updateBagGraphics() {
+      const list = document.getElementById('bag-items-list');
+      const headerCountBadge = document.getElementById('header-bag-count');
+      const footerWrap = document.getElementById('bag-footer-wrap');
+      const sumSpan = document.getElementById('bag-total-sum');
+
+      const totalItems = inquiryBag.reduce((sum, item) => sum + item.qty, 0);
+      headerCountBadge.innerText = totalItems;
+      headerCountBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+
+      list.innerHTML = '';
+
+      if (inquiryBag.length === 0) {
+        list.innerHTML = `
+          <div class="cart-empty">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+            <p>ENQUIRY BAG IS CURRENTLY EMPTY.</p>
+            <p style="font-size: 0.65rem; color: #5a5a6a; margin-top: 5px;">Double tap/explore cards to assemble lookbooks.</p>
+          </div>
+        `;
+        footerWrap.style.display = 'none';
+      } else {
+        footerWrap.style.display = 'block';
+        
+        let sumTotal = 0;
+
+        inquiryBag.forEach((item) => {
+          sumTotal += (item.price * item.qty);
+          const itemCard = document.createElement('div');
+          itemCard.className = 'bag-item-card';
+          itemCard.innerHTML = `
+            <div class="bag-item-thumb">
+              <img src="${item.image}">
+            </div>
+            <div class="bag-item-details">
+              <div class="bag-item-name">${item.name}</div>
+              <div class="bag-item-price">$${item.price}</div>
+            </div>
+            <div class="bag-item-qty">
+              <button class="qty-btn" onclick="popQty('${item.id}', -1)">-</button>
+              <span class="qty-val">${item.qty}</span>
+              <button class="qty-btn" onclick="popQty('${item.id}', 1)">+</button>
+            </div>
+            <button class="qty-del" onclick="deleteCartItem('${item.id}')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </button>
+          `;
+          list.appendChild(itemCard);
+        });
+
+        sumSpan.innerText = `$${sumTotal}`;
+      }
+    }
+
+    /* Pop Interactive Toast Announcements */
+    function showToastNotification(textHtml) {
+      const tray = document.getElementById('toast-tray');
+      const toast = document.createElement('div');
+      toast.className = 'toast-msg';
+      toast.innerHTML = `
+        <span class="pulsing-dot"></span>
+        <span style="flex: 1;">${textHtml}</span>
+      `;
+      tray.appendChild(toast);
+      
+      // Delay entrance to triggers transitions
+      setTimeout(() => toast.classList.add('show'), 50);
+
+      // Automated auto-destroy
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, 2600);
+    }
+
+     /* Deep link generation for Checkout & Messaging on WhatsApp */
+    function triggerDirectOrder(productId) {
+      const p = products.find(item => item.id === productId);
+      if (!p) return;
+
+      let baseText = "";
+      if (p.category === 'T-Shirts') {
+        baseText = `Hello Cruno Best Fashion Store,\n\nI would like to order this T-Shirt (${p.name}).\n\nPlease assist me with:\n\n• Available sizes\n• Available colours\n• Payment options\n• Delivery or collection details\n\nThank you.`;
+      } else if (p.category === 'Sweaters') {
+        baseText = `Hello Cruno Best Fashion Store,\n\nI would like to order this Sweater (${p.name}).\n\nPlease assist me with:\n\n• Available sizes\n• Available colours\n• Payment options\n• Delivery or collection details\n\nThank you.`;
+      } else if (p.category === 'Caps') {
+        baseText = `Hello Cruno Best Fashion Store,\n\nI would like to order this Cap (${p.name}).\n\nPlease assist me with:\n\n• Available colours\n• Payment options\n• Delivery or collection details\n\nThank you.`;
+      } else if (p.category === 'Bottoms') {
+        baseText = `Hello Cruno Best Fashion Store,\n\nI would like to order these Bottoms (${p.name}).\n\nPlease assist me with:\n\n• Available sizes\n• Available colours\n• Payment options\n• Delivery or collection details\n\nThank you.`;
+      } else {
+        baseText = `Hello Cruno Best Fashion Store,\n\nI would like to order this item (${p.name}).\n\nPlease assist me with:\n\n• Available sizes\n• Available colours\n• Payment options\n• Delivery or collection details\n\nThank you.`;
+      }
+
+      const url = `https://wa.me/263777397146?text=${encodeURIComponent(baseText)}`;
+      window.open(url, '_blank');
+      showToastNotification(`OPENING WHATSAPP TO PLACE ORDER...`);
+    }
+
+    function openWhatsAppInquire(topic) {
+      let text = '';
+      if (topic === 'GENERAL') {
+        text = `Hello Cruno Best Fashion Store,\n\nI'm visiting your mobile fashion display and have sizing/general enquiries regarding the new releases. Please let me know how to proceed. Thank you.`;
+      }
+      
+      const url = `https://wa.me/263777397146?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+
+    function checkoutEnquiryViaWhatsApp() {
+      if (inquiryBag.length === 0) return;
+
+      let billText = 'Hello Cruno Best Fashion Store,\n\nI am compiling a streetwear order inquiry from your mobile billboard catalog:\n\n';
+      let grandEstimate = 0;
+
+      inquiryBag.forEach((item, idx) => {
+        const rowTotal = item.price * item.qty;
+        grandEstimate += rowTotal;
+        billText += `${idx + 1}. [${item.name}] — Qty: ${item.qty} ($${item.price} each) = $${rowTotal}\n`;
+      });
+
+      billText += `\nESTIMATED BILL VALUE: $${grandEstimate} USD\n`;
+      billText += `\nPlease confirm availability for Harare delivery or collection options. Thank you.`;
+
+      const uri = `https://wa.me/263777397146?text=${encodeURIComponent(billText)}`;
+      window.open(uri, '_blank');
+      showToastNotification(`SUBMITTING ENQUIRY BAG DIRECTLY ON WHATSAPP...`);
+    }
+
+    /* Clipboard Copy for experience sharing */
+    function copyCampaignLink() {
+      const link = window.location.href;
+      
+      try {
+        navigator.clipboard.writeText(link).then(() => {
+          showToastNotification('CRUNO CAMPAIGN LINK COPIED! SHARE ON WHATSAPP ⚡️');
+        }).catch(() => {
+          fallbackCopyText(link);
+        });
+      } catch (e) {
+        fallbackCopyText(link);
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const input = document.createElement('input');
+      input.setAttribute('value', text);
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+      showToastNotification('CRUNO CAMPAIGN LINK COPIED! SHARE ON WHATSAPP ⚡️');
+    }
+
+    /* Expand fullscreen bezel layout for elite widescreen toggles */
+    function toggleBezelFullscreen() {
+      const bezel = document.getElementById('phone-bezel');
+      const wrapper = document.getElementById('showroom-wrapper');
+      const isFull = bezel.style.maxWidth === '100vw';
+
+      if (isFull) {
+        bezel.style.maxWidth = '395px';
+        bezel.style.borderRadius = '48px';
+        bezel.style.borderWidth = '10px';
+        bezel.style.height = '100%';
+        bezel.style.aspectRatio = '395 / 854';
+        
+        // Show leftovers
+        document.querySelector('.showroom-decor-left').style.display = 'flex';
+        showToastNotification('VIEWPORT STANDARDIZED TO MOBILE SIZE.');
+      } else {
+        bezel.style.maxWidth = '100vw';
+        bezel.style.borderRadius = '0';
+        bezel.style.borderWidth = '0';
+        bezel.style.height = '100vh';
+        bezel.style.aspectRatio = 'auto';
+        
+        // Hide leftovers
+        document.querySelector('.showroom-decor-left').style.display = 'none';
+        showToastNotification('VIEWPORT SCALED TO ENTIRE BROWSER CANVAS.');
+      }
+    }
+  </script>
+</body>
+</html>
